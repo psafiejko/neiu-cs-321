@@ -10,9 +10,9 @@ My project will be an application for creating construction estimates. It will t
 
 ### Motivation:
 
-The motivation behind my project is my father. For so long now, he has had to manually keep track of all his clients and their information. He sometimes gets things mixed up and can't seem to find a proper way of organizing himself. To save him time and patience, I wanted to create this application so he will have a way to keep his clients organized and be able to tend to new clients at a faster rate. I've always wanted to help my father with this issue, but I could never figure out a proper solution. Through this class I will be able to create said application and make his life a little bit easier.
+The motivation behind my project is my father. For so long now, he has had to manually keep track of all his clients and their information. He sometimes gets things mixed up and cannot seem to find a proper way of organizing himself. To save him time and patience, I wanted to create this application so he will have a way to keep his clients organized and be able to tend to new clients at a faster rate. I've always wanted to help my father with this issue, but I could never figure out a proper solution. Through this class I will be able to create said application and make his life a little bit easier.
 
-### Server Side Components:
+### Server-Side Components:
 
 As far as Server Side Components go for this project, I will be storing various information about the user. This information will later be used in the estimate. Data that will be included: Name, Address, Phone Number, Email Address, Type of Job, Urgency, Additional Information.
 
