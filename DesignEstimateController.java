@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Controller
-@RequestMapping("/estimateform")
+@RequestMapping("/form")
 public class DesignEstimateController {
 
 
@@ -33,7 +33,7 @@ public class DesignEstimateController {
     public String processEstimate(@Valid @ModelAttribute("estiamteform") Estimate estimateform, Errors errors){
         if (errors.hasErrors())
             return "estimateform";
-        //save our estimate form
+
 
         log.info("Processing..." + estimateform);
         return "redirect:/submit/current";
@@ -48,7 +48,8 @@ public class DesignEstimateController {
         for (Type type: types) {
             model.addAttribute(type.toString().toLowerCase(), filterByType(JobTypes, type));
         }
-        model.addAttribute("estimateform", new Estimate());
+
+        model.addAttribute("estimate", new Estimate());
     }
 
     private Object filterByType(List<JobTypes> JobTypes, Type type) {
@@ -60,17 +61,16 @@ public class DesignEstimateController {
 
 
     private List<JobTypes> createFormList() {
-        List<JobTypes> jobTypes = Arrays.asList(
-                new JobTypes("TILE", "Bathroom Tiling", Type.Bathroom),
-                new JobTypes("SHWR", "Shower Tiling", Type.Bathroom),
-                new JobTypes("APPL", "Kitchen Appliance Installation", Type.Kitchen),
-                new JobTypes("FlOR", "Kitchen Floor Tiling", Type.Kitchen),
-                new JobTypes("SHIN","Roof Shingles", Type.Roof),
-                new JobTypes("RCLN","Roof Cleanup", Type.Roof),
-                new JobTypes("KPLM","Kitchen Plumbing", Type.Plumbing),
-                new JobTypes("BPLM","Bathroom Plumbing", Type.Plumbing)
+        return Arrays.asList(
+                new JobTypes("TILE", "Bathroom Tiling", Type.BATHROOM),
+                new JobTypes("SHWR", "Shower Tiling", Type.BATHROOM),
+                new JobTypes("APPL", "Kitchen Appliance Installation", Type.KITCHEN),
+                new JobTypes("FlOR", "Kitchen Floor Tiling", Type.KITCHEN),
+                new JobTypes("SHIN","Roof Shingles", Type.ROOF),
+                new JobTypes("RCLN","Roof Cleanup", Type.ROOF),
+                new JobTypes("KPLM","Kitchen Plumbing", Type.PLUMBING),
+                new JobTypes("BPLM","Bathroom Plumbing", Type.PLUMBING)
 
         );
-        return jobTypes;
     }
 }

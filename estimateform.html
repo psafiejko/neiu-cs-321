@@ -4,73 +4,83 @@
       lang="es">
 <head>
     <title>Estimate</title>
-    <link rel="stylesheet", th:href="@{styles.css}"/>
+    <link rel="stylesheet" href="../static/styles.css">
 </head>
 
 <body>
-
-<h1 style="text-align: center">SJ Carpentry</h1>
-<img style = "width: 130px; height: 110px; margin-left: 880px; margin-right: auto"  th:src="@{/images/carpentry.jpg}" alt="A saw cutting through wood" src="images/carpentry.jpg"/>
-
-<h2 style="text-align: center">Get a Free Estimate Today!</h2>
-<h2 style="text-align: center">Choose from our Selection of Jobs!</h2>
-
-<form method="post" th:object=${estimateform}">
-<span class="validationError"
-    th:if="${#fields.hasErrors('JobTypes')}"
-    th:errors="*{JobTypes}"> Job Selection Error</span>
-
-<div class = "grid">
-    <div class="JobTypes-group" id = "Bathroom">
-        <h3>Bathroom Jobs:</h3>
-        <div th:each="JobTypes :${Bathroom}">
-            <input name = "JobTypes" type = "checkbox" th:value="${JobTypes.id}"/>
-            <span th:text="${JobTypes.name}">Bathroom Tiling</span><br/>
-            <input name = "JobTypes" type = "checkbox" th:value="${JobTypes.id}"/>
-            <span th:text="${JobTypes.name}">Shower Tiling</span><br/>
-    </div>
-    </div>
-
-    <div class="JobTypes-group" id = "Kitchen">
-        <h3>Kitchen Jobs:</h3>
-        <div th:each="JobTypes :${Kitchen}">
-            <input name = "JobTypes" type = "checkbox" th:value="${JobTypes.id}"/>
-            <span th:text="${JobTypes.name}">Kitchen Floor Tiling</span><br/>
-            <input name = "JobTypes" type = "checkbox" th:value="${JobTypes.id}"/>
-            <span th:text="${JobTypes.name}">Kitchen Appliance Installation</span><br/>
-        </div>
-    </div>
-
-    <div class="JobTypes-group" id = "Roof">
-        <h3>Roof Jobs:</h3>
-        <div th:each="JobTypes :${Roof}">
-            <input name = "JobTypes" type = "checkbox" th:value="${JobTypes.id}"/>
-            <span th:text="${JobTypes.name}">Brand New Roof</span><br/>
-            <input name = "JobTypes" type = "checkbox" th:value="${JobTypes.id}"/>
-            <span th:text="${JobTypes.name}">Roof Cleanup</span><br/>
-        </div>
-    </div>
-
-
-    <div class="JobTypes-group" id = "Plumbing">
-        <h3>Plumbing Jobs:</h3>
-        <div th:each="JobTypes :${Plumbing}">
-            <input name = "JobTypes" type = "checkbox" th:value="${JobTypes.id}"/>
-            <span th:text="${JobTypes.name}">Kitchen Plumbing</span><br/>
-            <input name = "JobTypes" type = "checkbox" th:value="${JobTypes.id}"/>
-            <span th:text="${JobTypes.name}">Bathroom Plumbing</span><br/>
-        </div>
-    </div>
-
+<div class="formHead">
+    <h1>SJ Carpentry</h1>
+</div>
+<div class="formImage">
+    <img th:src="@{images/carpentry.jpg}" alt="A saw cutting through wood"/>
 </div>
 
+<div class="formMessage">
+    <h2>Get a Free Estimate Today!</h2>
+    <h2>Choose from our Selection of Jobs!</h2>
+</div>
+
+<form method="post" th:object="${estimate}">
+<span class="validationError"
+      th:if="${#fields.hasErrors('jobs')}"
+      th:errors="*{jobs}"> Job Selection Error</span>
+
+    <div class="grid">
+        <div class="JobTypes" id="bathroom">
+            <h3>Bathroom Jobs:</h3>
+            <div th:each="jobTypes :${bathroom}">
+                <input name="jobs" type="checkbox" th:value="${jobTypes.id}"/>
+                <span th:text="${jobTypes.name}">BATHROOM</span><br/>
+            </div>
+        </div>
+
+        <div class="JobTypes" id="kitchen">
+            <h3>Kitchen Jobs:</h3>
+            <div th:each="jobTypes :${kitchen}">
+                <input name="jobs" type="checkbox" th:value="${jobTypes.id}"/>
+                <span th:text="${jobTypes.name}">KITCHEN</span><br/>
+
+            </div>
+        </div>
+
+        <div class="JobTypes" id="roof">
+            <h3>Roof Jobs:</h3>
+            <div th:each="jobTypes :${roof}">
+                <input name="jobs" type="checkbox" th:value="${jobTypes.id}"/>
+                <span th:text="${jobTypes.name}">ROOF</span><br/>
+            </div>
+        </div>
+
+
+        <div class="JobTypes" id="plumbing">
+            <h3>Plumbing Jobs:</h3>
+            <div th:each="jobTypes :${plumbing}">
+                <input name="jobTypes" type="checkbox" th:value="${JobTypes.id}"/>
+                <span th:text="${jobTypes.name}">PLUMBING</span><br/>
+            </div>
+        </div>
+
+    </div>
+
     <div>
-        <h3>What is your Name?</h3>
+        <h3>Provide your name:</h3>
         <input type="text" th:field="*{name}"/>
-        <span class = "validationError"
-            th:if="${#fields.hasErrors('name')}"
-            th:errors="*{name}"> Name Error</span>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('name')}"
+              th:errors="*{name}"> Name Error</span>
         <br/><br/>
+        <h3>Phone Number:</h3>
+        <input type="text" th:field="*{phone}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('phone')}"
+              th:errors="*{phone}"> Phone Error</span>
+        <br/>
+        <h3>Description:</h3>
+        <input type="text" th:field="*{description}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('description')}"
+              th:errors="*{description}"> Description Error</span>
+
         <button>Submit Form</button>
     </div>
 
@@ -79,7 +89,7 @@
 
 </body>
 
-<footer style = "position: absolute; bottom: 0; left: 0; right: 0; text-align: center">
+<footer class="formFoot">
 
     <p>Copyright @2020<br/>
         Piotr Safiejko<br/>
