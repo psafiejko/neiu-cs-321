@@ -1,0 +1,3 @@
+2020-11-05 21:03:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ESTIMATE_JOB_TYPES" not found; SQL statement:
+delete from Estimate_Job_Types [42102-200]

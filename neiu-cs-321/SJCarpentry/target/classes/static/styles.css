@@ -1,0 +1,89 @@
+.redirect {
+    height: 200px;
+    width: 400px;
+
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -200px;
+}
+
+div.JobTypes:nth-child(odd) {
+    float: left;
+    padding-right: 20px;
+}
+
+div.JobTypes:nth-child(even) {
+    float: left;
+    padding-right: 0;
+}
+
+div.JobTypes {
+    width: 50%;
+}
+
+.grid:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+*, *:after, *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+span.validationError {
+    color: #ff0000;
+}
+
+.homeHeader{
+    text-align: center;
+}
+
+.homeImage{
+    width: 130px;
+    height: 110px;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.homeFoot{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.formFoot{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.formHead{
+    text-align: center;
+    position: fixed;
+    right: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.formImage{
+    width: 130px;
+    height: 110px;
+
+}
+
+.formMessage{
+    text-align: center;
+}
+
