@@ -1,20 +1,52 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Results</title>
+    <title>Estimate Information</title>
 
     <link rel="stylesheet" href="../static/styles.css">
 </head>
 
 <body>
-
-<h1>Results:</h1>
+<div class="dataHead">
+<h1>Estimate Information:</h1>
+</div>
 <div class="resultImage">
     <img th:src="@{images/carpentry.jpg}" alt="A saw cutting through wood"/>
 </div>
 
-    <div class="estimate" th:each="estimate: ${}"
+    <div class="estimate" th:each="estimate: ${jobs}">
+        <p name = "estimate" type = "hidden" th:value="${estimate.name}">
+            <b>Estimate: </b>
+            <span th:text="${estimate.name}"> Estimate Name </span> </p>
+
+        <p class = "date"> <b>Date: </b> <span th:text="${estimate.createdAt.getDayOfMonth()} + ''
+            + ${estimate.createdAt.getMonth()} + ''
+            + ${estimate.createdAt.getYear()}"> Estimate Date </span>
+
+        </p>
+
+        <p><b>Estimate Information</b></p>
+        <div th:each="jobs :${estimate.jobs}">
+            <p name = "job" type = "text" th:value="${jobTypes.id}">
+                <span th:text="${jobTypes.name}">List of Jobs Selected</span>
+            </p>
+        </div>
+        <div th:each="phone :${estimate.phone}">
+            <p name = "phone" type = "text" th:value="${estimate.phone}">
+                <span th:text="${estimate.phone}">Phone Number</span>
+            </p>
+        </div>
+        <div th:each="description :${estimate.description}">
+            <p name = "description" type = "text" th:value="${estimate.description}">
+                <span th:text="${estimate.description}">Description</span>
+            </p>
+        </div>
+
+
+    </div>
 
 
 
