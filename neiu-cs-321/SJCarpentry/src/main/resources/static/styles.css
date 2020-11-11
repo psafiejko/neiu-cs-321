@@ -24,6 +24,14 @@ div.JobTypes {
     width: 50%;
 }
 
+.grid{
+    text-align: center;
+}
+
+.extra{
+    text-align: center;
+}
+
 .grid:after {
     content: "";
     display: table;
@@ -82,6 +90,10 @@ span.validationError {
     margin-top: auto;
     margin-left: auto;
     margin-right: auto;
+
+}
+
+.description{
 
 }
 

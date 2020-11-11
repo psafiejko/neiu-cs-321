@@ -12,7 +12,7 @@
     <h1>SJ Carpentry</h1>
 </div>
 <div class="formImage">
-    <img th:src="@{images/carpentry.jpg}" alt="A saw cutting through wood"/>
+    <img th:src="@{/images/carpentry.jpg}" alt="A saw cutting through wood"/>
 </div>
 
 <div class="formMessage">
@@ -62,7 +62,7 @@
 
     </div>
 
-    <div>
+    <div class="extra">
         <h3>Provide your name:</h3>
         <input type="text" th:field="*{name}"/>
         <span class="validationError"
@@ -76,10 +76,10 @@
               th:errors="*{phone}"> Phone Error</span>
         <br/>
         <h3>Description:</h3>
-        <input type="text" th:field="*{description}"/>
+        <input type="text" size="75" th:field="*{description}"/>
         <span class="validationError"
               th:if="${#fields.hasErrors('description')}"
-              th:errors="*{description}"> Description Error</span>
+              th:errors="*{description}"> Description Error</span> <br/><br/>
 
         <button>Submit Form</button>
     </div>
