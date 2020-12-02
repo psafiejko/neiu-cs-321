@@ -1,0 +1,147 @@
+.redirect {
+    height: 200px;
+    width: 400px;
+
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -200px;
+}
+
+div.JobTypes:nth-child(odd) {
+    float: left;
+    padding-right: 20px;
+}
+
+div.JobTypes:nth-child(even) {
+    float: left;
+    padding-right: 0;
+}
+
+div.JobTypes {
+    width: 50%;
+}
+
+.grid{
+    text-align: center;
+}
+
+.extra{
+    text-align: center;
+}
+
+.grid:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+*, *:after, *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.nav{
+    text-align: center;
+}
+
+span.validationError {
+    color: #ff0000;
+}
+
+.homeHeader{
+    text-align: center;
+}
+
+.homeImage{
+    width: 75px;
+    height: 75px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.homeFoot{
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.formFoot{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.formHead{
+    text-align: center;
+    right: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.formImage{
+    width: 130px;
+    height: 110px;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.description{
+
+}
+
+.formMessage{
+    text-align: center;
+}
+
+
+.redirect{
+    text-align: center;
+}
+
+
+
+.dataFoot{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.estimate{
+    display: block;
+    width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid blue;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.resultImage{
+    width: 130px;
+    height: 110px;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dataHead{
+    text-align: center;
+    right: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+}
