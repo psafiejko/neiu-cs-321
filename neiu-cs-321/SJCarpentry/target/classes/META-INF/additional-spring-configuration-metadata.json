@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "estimate.orders.pageSize",
+      "type": "java.lang.Integer",
+      "description": "Sets the maximum orders to display."
+  }
+] }

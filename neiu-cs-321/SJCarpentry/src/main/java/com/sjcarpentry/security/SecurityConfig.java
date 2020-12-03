@@ -41,7 +41,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/h2-console/**")
-                .permitAll();
+                .permitAll()
+            .and()
+                .formLogin().loginPage("/login").defaultSuccessUrl("/estimate_form")
+            .and()
+                .logout().logoutSuccessUrl("/home");
 
         http.csrf().disable();
         http.headers().frameOptions().disable();

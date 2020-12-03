@@ -1,13 +1,10 @@
 package com.sjcarpentry.data;
 
 
-import com.sjcarpentry.JobTypes;
-import org.springframework.boot.autoconfigure.batch.BatchProperties;
+import com.sjcarpentry.Job_Types;
 import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
-
-public interface JobTypestRepository extends CrudRepository<JobTypes, String> {
+public interface JobTypestRepository extends CrudRepository<Job_Types, String> {
 
 
 }

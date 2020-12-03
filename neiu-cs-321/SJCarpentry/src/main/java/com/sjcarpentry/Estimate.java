@@ -31,9 +31,11 @@ public class  Estimate{
     @Size(min = 20, message = "Please provide more details")
     private String description;
 
-    @ManyToMany(targetEntity = JobTypes.class)
+    @ManyToMany(targetEntity = Job_Types.class)
     @NotEmpty(message = "You must choose at least 1 job")
-    private List<JobTypes> jobs;
+    private List<Job_Types> jobs;
+
+
 
     @PrePersist
     void createdAt() {

@@ -1,12 +1,14 @@
 package com.sjcarpentry.web;
 
 import com.sjcarpentry.Estimate;
-import com.sjcarpentry.JobTypes;
-import com.sjcarpentry.JobTypes.Type;
+import com.sjcarpentry.Job_Types;
+import com.sjcarpentry.Job_Types.Type;
+import com.sjcarpentry.User;
 import com.sjcarpentry.data.EstimateRepository;
 import com.sjcarpentry.data.JobTypestRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -36,15 +38,25 @@ public class DesignEstimateController {
 
 
     @GetMapping
-    public String showEstimateForm()
+    public String showEstimateForm(Model model, @AuthenticationPrincipal User user)
     {
-        return "estimateform";
+        addUserInfoToModel(model, user);
+        return "estimate_form";
+    }
+
+    private void addUserInfoToModel(Model model, User user) {
+        model.addAttribute("fullName", user.getFullName());
+        model.addAttribute("street", user.getStreet());
+        model.addAttribute("city", user.getCity());
+        model.addAttribute("state", user.getState());
+        model.addAttribute("zip", user.getZip());
+        model.addAttribute("phoneNumber", user.getPhoneNumber());
     }
 
     @PostMapping
     public String processEstimate(@Valid @ModelAttribute("estimate") Estimate estimate, Errors errors){
         if (errors.hasErrors())
-            return "estimateform";
+            return "estimate_form";
 
         Estimate savedEstimate = estimateRepo.save(estimate);
         log.info("Processing..." + estimate);
@@ -55,7 +67,7 @@ public class DesignEstimateController {
 
     @ModelAttribute
     public void addAttributes(Model model) {
-        List<JobTypes> JobTypes = (List<JobTypes>)jobtypeRepo.findAll();
+        List<Job_Types> JobTypes = (List<Job_Types>)jobtypeRepo.findAll();
         Type[] types = Type.values();
         for (Type type: types) {
             model.addAttribute(type.toString().toLowerCase(), filterByType(JobTypes, type));
@@ -69,7 +81,7 @@ public class DesignEstimateController {
         return new Estimate();
     }
 
-    private Object filterByType(List<JobTypes> JobTypes, Type type) {
+    private Object filterByType(List<Job_Types> JobTypes, Type type) {
         return JobTypes
                 .stream()
                 .filter(x -> x.getType().equals(type))

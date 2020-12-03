@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link th:href="@{/styles.css}" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <span class="navbar-brand">SJ Carpentry</span>
+        <button class="nav-bar-toggler" type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" th:classappend="${#request.getServletPath() == '/' ? 'active' : ''}">
+                    <a class="nav-link" th:href="@{/}">Home</a>
+                </li>
+                <li class="nav-item" th:classappend="${#request.getServletPath() == '/login' ? 'active' : ''}">
+                    <a class="nav-link" th:href="@{/login}">Login</a>
+                </li>
+                <li class="nav-item" th:classappend="${#request.getServletPath() == '/registration' ? 'active' : ''}">
+                    <a class="nav-link" th:href="@{/registration}">Register</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-5">
+        <div class="row justify-content-center">
+            <h1 class="col=12 text-center">Register for a free Estimate!</h1>
+        </div>
+        <div class="row justify-content-center mt-2 mb-2">
+            <img th:src="@{/images/carpentry.jpg}"/>
+        </div>
+    </div>
+
+    <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.5.2/bootstrap.min.js}"></script>
+
+    <h1>Register to fill out an Estimate</h1>
+    <img th:src="@{/images/carpentry.jpg}" alt="A saw cutting through wood"/>
+
+    <form method="post" th:action="@{/register}" th:object="${registrationForm}">
+
+        <label for="username">Username: </label>
+        <input type="text" th:name="username" th:value="*{username}" id="username"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('username')}"
+              th:errors="*{username}">Username Error</span>
+        <br/><br/>
+
+        <label for="password">Password: </label>
+        <input type="password" th:name="password" th:value="*{password}" id="password"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('password')}"
+              th:errors="*{password}">Password Error</span>
+        <br/><br/>
+
+        <label for="fullName">Full Name: </label>
+        <input type="text" th:name="fullName" th:value="*{fullName}" id="fullName"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('fullName')}"
+              th:errors="*{fullName}">Full Name Error</span>
+        <br/><br/>
+
+        <label for="street">Street: </label>
+        <input type="text" th:name="street" th:value="*{street}" id="street"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('street')}"
+              th:errors="*{street}">Street Error</span>
+        <br/><br/>
+
+        <label for="city">City: </label>
+        <input type="text" th:name="city" th:value="*{city}" id="city"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('city')}"
+              th:errors="*{city}">City Error</span>
+        <br/><br/>
+
+        <label for="zip">Zip: </label>
+        <input type="text" th:name="zip" th:value="*{zip}" id="zip"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('zip')}"
+              th:errors="*{zip}">Zip Error</span>
+        <br/><br/>
+
+        <label for="phone">Phone: </label>
+        <input type="text" th:name="phone" th:value="*{phone}" id="phone"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('phone')}"
+              th:errors="*{phone}">Phone Error</span>
+        <br/><br/>
+
+        <input type="submit" value="Register"><br/>
+
+    </form>
+
+
+
+</body>
+
+<footer class="foot">
+
+    <p>Copyright @2020<br/>
+        Piotr Safiejko<br/>
+        CS-321-1
+    </p>
+
+</footer>
+
+</html>

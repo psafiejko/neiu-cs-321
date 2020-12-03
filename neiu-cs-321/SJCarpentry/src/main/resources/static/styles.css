@@ -10,6 +10,9 @@
     margin-left: -200px;
 }
 
+/*Home Page*/
+
+
 div.JobTypes:nth-child(odd) {
     float: left;
     padding-right: 20px;
@@ -44,6 +47,10 @@ div.JobTypes {
     box-sizing: border-box;
 }
 
+.nav{
+    text-align: center;
+}
+
 span.validationError {
     color: #ff0000;
 }
@@ -53,22 +60,15 @@ span.validationError {
 }
 
 .homeImage{
-    width: 130px;
-    height: 110px;
-    margin-top: auto;
+    width: 75px;
+    height: 75px;
     margin-left: auto;
     margin-right: auto;
 }
 
-.homeFoot{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    text-align: center;
-}
 
-.formFoot{
+
+.foot{
     position: absolute;
     bottom: 0;
     left: 0;
@@ -93,9 +93,7 @@ span.validationError {
 
 }
 
-.description{
 
-}
 
 .formMessage{
     text-align: center;
@@ -108,13 +106,6 @@ span.validationError {
 
 
 
-.dataFoot{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    text-align: center;
-}
 
 .estimate{
     display: block;

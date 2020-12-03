@@ -1,7 +1,14 @@
+
 delete from Estimate;
 delete from Estimate_Jobs;
 
 delete from Job_Types;
+
+
+/*
+delete from User;
+*/
+
 insert into Job_Types(id, name, type)
 values('KICH1', 'Kitchen Appliance Installation', 'KITCHEN');
 insert into Job_Types(id, name, type)

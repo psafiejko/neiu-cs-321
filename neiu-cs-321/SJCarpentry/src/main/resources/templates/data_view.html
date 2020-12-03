@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Estimate Information</title>
+
+    <link th:href="@{/styles.css}" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css}">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <span class="navbar-brand">SJ Carpentry</span>
+    <button class="nav-bar-toggler" type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" th:classappend="${#request.getServletPath() == '/' ? 'active' : ''}">
+                <a class="nav-link" th:href="@{/}">Home</a>
+            </li>
+            <li class="nav-item" th:classappend="${#request.getServletPath() == '/login' ? 'active' : ''}">
+                <a class="nav-link" th:href="@{/login}">Login</a>
+            </li>
+            <li class="nav-item" th:classappend="${#request.getServletPath() == '/registration' ? 'active' : ''}">
+                <a class="nav-link" th:href="@{/registration}">Register</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container-fluid mt-5">
+    <div class="row justify-content-center">
+        <h1 class="col=12 text-center">Welcome to...</h1>
+    </div>
+    <div class="row justify-content-center mt-2 mb-2">
+        <img th:src="@{/images/carpentry.jpg}"/>
+    </div>
+</div>
+
+<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.5.2/bootstrap.min.js}"></script>
+
+<div class="dataHead">
+<h1>Estimate Information:</h1>
+</div>
+<div class="resultImage">
+    <img th:src="@{/images/carpentry.jpg}" alt="A saw cutting through wood"/>
+</div>
+
+    <div class="estimate" th:each="estimate: ${jobs}">
+        <p name = "estimate" type = "hidden" th:value="${estimate.name}">
+            <b>Estimate: </b>
+            <span th:text="${estimate.name}"> Estimate Name </span> </p>
+
+        <p class = "date"> <b>Date: </b> <span th:text="${estimate.createdAt.getDayOfMonth(0)} + ''
+            + ${estimate.createdAt.getMonth()} + ''
+            + ${estimate.createdAt.getYear()}"> Estimate Date </span>
+
+        </p>
+
+        <p><b>Estimate Information</b></p>
+        <div th:each="jobs :${estimate.jobs}">
+            <p name = "job" type = "text" th:value="${jobTypes.id}">
+                <span th:text="${jobTypes.name}">List of Jobs Selected</span>
+            </p>
+        </div>
+        <div th:each="phone :${estimate.phone}">
+            <p name = "phone" type = "text" th:value="${estimate.phone}">
+                <span th:text="${estimate.phone}">Phone Number</span>
+            </p>
+        </div>
+        <div th:each="description :${estimate.description}">
+            <p name = "description" type = "text" th:value="${estimate.description}">
+                <span th:text="${estimate.description}">Description</span>
+            </p>
+        </div>
+
+
+    </div>
+
+
+
+</body>
+
+<footer class="foot">
+
+    <p>Copyright @2020<br/>
+        Piotr Safiejko<br/>
+        CS-321-1
+    </p>
+
+</footer>
+</html>
