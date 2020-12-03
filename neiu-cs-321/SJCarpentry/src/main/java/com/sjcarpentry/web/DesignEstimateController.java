@@ -81,6 +81,9 @@ public class DesignEstimateController {
         return new Estimate();
     }
 
+    @ModelAttribute(name = "username")
+    public String addUserNameToModel (@AuthenticationPrincipal User user) {return user.getFullName();}
+
     private Object filterByType(List<Job_Types> JobTypes, Type type) {
         return JobTypes
                 .stream()

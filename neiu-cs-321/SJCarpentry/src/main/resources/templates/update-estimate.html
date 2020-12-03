@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="es">
+<head th:insert="fragments/base :: headContent"></head>
+<body>
+
+    <div th:replace="fragments/base :: navigation"></div>
+
+    <div class="container-fluid mt-5">
+        <div class="row justify-content-center">
+            <h1 class="col-12 text-center">Update your Estimate</h1>
+        </div>
+        <div th:replace="fragments/base :: appImage"></div>
+    </div>
+
+    <form method="post" th:action="@{/modify/update{estimateId}(estimateId=${estimate.id})}" th:object="${estimate}">
+<span class="validationError"
+      th:if="${#fields.hasErrors('jobs')}"
+      th:errors="*{jobs}"> Job Selection Error</span>
+
+        <div class="grid">
+            <div class="JobTypes" id="bathroom">
+                <h3>Bathroom Jobs:</h3>
+                <div th:each="jobTypes :${bathroom}">
+                    <input name="jobs" type="checkbox" th:value="${jobTypes.id}"
+                    th:checked="${#lists.contains(jobtypesIds, jobTypes.id)}"/>
+                    <span th:text="${jobTypes.name}">BATHROOM</span><br/>
+                </div>
+            </div>
+
+            <div class="JobTypes" id="kitchen">
+                <h3>Kitchen Jobs:</h3>
+                <div th:each="jobTypes :${kitchen}">
+                    <input name="jobs" type="checkbox" th:value="${jobTypes.id}"
+                           th:checked="${#lists.contains(jobtypesIds, jobTypes.id)}"/>
+                    <span th:text="${jobTypes.name}">KITCHEN</span><br/>
+
+                </div>
+            </div>
+
+            <div class="JobTypes" id="roof">
+                <h3>Roof Jobs:</h3>
+                <div th:each="jobTypes :${roof}">
+                    <input name="jobs" type="checkbox" th:value="${jobTypes.id}"
+                           th:checked="${#lists.contains(jobtypesIds, jobTypes.id)}"/>
+                    <span th:text="${jobTypes.name}">ROOF</span><br/>
+                </div>
+            </div>
+
+
+            <div class="JobTypes" id="plumbing">
+                <h3>Plumbing Jobs:</h3>
+                <div th:each="jobTypes :${plumbing}">
+                    <input name="jobTypes" type="checkbox" th:value="${jobTypes.id}"
+                           th:checked="${#lists.contains(jobtypesIds, jobTypes.id)}"/>
+                    <span th:text="${jobTypes.name}">PLUMBING</span><br/>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="extra">
+            <h3>Provide your name:</h3>
+            <input type="text" th:name="name" th:value="${fullName}" id="name"/>
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('name')}"
+                  th:errors="*{name}"> Name Error</span>
+            <br/><br/>
+            <h3>Phone Number:</h3>
+            <input type="text" th:name="phone" th:value="${phoneNumber}" id="phone"/>
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('phone')}"
+                  th:errors="*{phone}"> Phone Error</span>
+            <br/>
+            <h3>Description:</h3>
+            <input type="text" size="75" th:field="*{description}"/>
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('description')}"
+                  th:errors="*{description}"> Description Error</span> <br/><br/>
+
+            <div class="row justify-content-center">
+                <a th:href="@{/results/}" class="btn btn-outline-danger form-control col-3 mr-5">Cancel</a>
+                <button class="btn-outline-dark form-control col-3 mb-5">Update</button>
+            </div>
+
+            <button>Submit Form</button>
+        </div>
+
+    </form>
+
+</body>
+
+<th:block th:insert="fragments/base :: scripts"></th:block>
+
+</html>

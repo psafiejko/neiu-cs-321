@@ -40,11 +40,12 @@
 
 <div class="container-fluid mt-5">
     <div class="row justify-content-center">
-        <h1 class="col=12 text-center">Welcome to...</h1>
+        <h1 class="col=12 text-center">Hello, <span th:text="${username}">NAME</span></h1>
     </div>
-    <div class="row justify-content-center mt-2 mb-2">
-        <img th:src="@{/images/carpentry.jpg}"/>
+    <div class="row justify-content-center">
+        <h1 class="col-12 text-center">Fill out the Estimate</h1>
     </div>
+    <div th:replace="fragments/base :: appImage"></div>
 </div>
 
 <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
@@ -84,6 +85,9 @@
             <p name = "description" type = "text" th:value="${estimate.description}">
                 <span th:text="${estimate.description}">Description</span>
             </p>
+        </div>
+        <div class="col-3 text-left">
+            <a th:href="@{/modify/{estimateId}{estimateId=${estimate.id})}" class="btn btn-sm btn-dark"> Update Estimate</a>
         </div>
 
 
