@@ -1,0 +1,23 @@
+{
+  "groups": [
+    {
+      "name": "estimate.orders",
+      "type": "com.sjcarpentry.web.DataProperties",
+      "sourceType": "com.sjcarpentry.web.DataProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "estimate.orders.page-size",
+      "type": "java.lang.Integer",
+      "sourceType": "com.sjcarpentry.web.DataProperties",
+      "defaultValue": 0
+    },
+    {
+      "name": "estimate.orders.pageSize",
+      "type": "java.lang.Integer",
+      "description": "Sets the maximum orders to display."
+    }
+  ],
+  "hints": []
+}
