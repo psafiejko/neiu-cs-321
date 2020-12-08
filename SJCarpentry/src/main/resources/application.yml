@@ -1,4 +1,3 @@
-
 spring:
   jpa:
     hibernate:
@@ -16,7 +15,5 @@ spring:
 
 
 estimate:
-    orders:
-      pageSize: 5
-
-
+  orders:
+    pageSize: 5

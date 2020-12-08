@@ -1,6 +1,4 @@
 
-
-
 delete from Estimate_Jobs;
 delete from Estimate;
 

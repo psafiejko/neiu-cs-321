@@ -3,7 +3,7 @@ package com.sjcarpentry.web;
 import com.sjcarpentry.Estimate;
 import com.sjcarpentry.Job_Types;
 import com.sjcarpentry.data.EstimateRepository;
-import com.sjcarpentry.data.JobTypestRepository;
+import com.sjcarpentry.data.JobTypesRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,13 +21,13 @@ import java.util.stream.Collectors;
 @RequestMapping("/modify")
 public class ModifyEstimateController {
 
-    private final EstimateRepository estimateRepo;
-    private final JobTypestRepository jobtypeRepo;
+    private EstimateRepository estimateRepo;
+    private JobTypesRepository jobTypeRepo;
 
 
     @Autowired
-    public ModifyEstimateController(JobTypestRepository jobtypeRepo, EstimateRepository estimateRepo) {
-        this.jobtypeRepo = jobtypeRepo;
+    public ModifyEstimateController(JobTypesRepository jobTypeRepo, EstimateRepository estimateRepo) {
+        this.jobTypeRepo = jobTypeRepo;
         this.estimateRepo = estimateRepo;
     }
 
@@ -35,7 +35,7 @@ public class ModifyEstimateController {
     @GetMapping("/{estimateId}")
     public  String updateEstimate(@PathVariable("estimateId") long id, Model model) {
         Estimate estimate = estimateRepo.findById(id).get();
-        model.addAttribute("jobtypesIds", getJobTypesId(estimate));
+        model.addAttribute("jobTypesIds", getJobTypesId(estimate));
         model.addAttribute("estimate", estimate);
         addJobTypesToModel(model);
         return "update-estimate";
@@ -56,21 +56,21 @@ public class ModifyEstimateController {
 
     private List<String> getJobTypesId(Estimate estimate) {
         List<Job_Types> JobTypes = estimate.getJobs();
-        List<String> jobtypesIds = new ArrayList<>();
+        List<String> jobTypesIds = new ArrayList<>();
         for (Job_Types job_types: JobTypes) {
-            jobtypesIds.add(job_types.getId());
+            jobTypesIds.add(job_types.getId());
         }
-        return jobtypesIds;
+        return jobTypesIds;
      }
 
     private void addJobTypesToModel(Model model) {
-        List<Job_Types> JobTypes = (List<Job_Types>)jobtypeRepo.findAll();
+        List<Job_Types> JobTypes = (List<Job_Types>)jobTypeRepo.findAll();
         Job_Types.Type[] types = Job_Types.Type.values();
         for (Job_Types.Type type: types) {
             model.addAttribute(type.toString().toLowerCase(), filterByType(JobTypes, type));
         }
 
-        model.addAttribute("estimate", new Estimate());
+        //model.addAttribute("estimate", new Estimate());
     }
 
 

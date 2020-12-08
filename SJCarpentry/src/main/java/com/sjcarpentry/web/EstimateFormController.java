@@ -5,7 +5,7 @@ import com.sjcarpentry.Job_Types;
 import com.sjcarpentry.Job_Types.Type;
 import com.sjcarpentry.User;
 import com.sjcarpentry.data.EstimateRepository;
-import com.sjcarpentry.data.JobTypestRepository;
+import com.sjcarpentry.data.JobTypesRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -26,12 +26,12 @@ import java.util.stream.Collectors;
 @RequestMapping("/form")
 public class EstimateFormController {
 
-    private final JobTypestRepository jobtypeRepo;
+    private final JobTypesRepository jobtypeRepo;
     private final EstimateRepository estimateRepo;
 
 
     @Autowired
-    public EstimateFormController(JobTypestRepository jobtypeRepo, EstimateRepository estimateRepo) {
+    public EstimateFormController(JobTypesRepository jobtypeRepo, EstimateRepository estimateRepo) {
         this.jobtypeRepo = jobtypeRepo;
         this.estimateRepo = estimateRepo;
     }
@@ -54,15 +54,14 @@ public class EstimateFormController {
     }
 
     @PostMapping
-    public String processEstimate(@Valid @ModelAttribute("estimate") Estimate estimate, Errors errors){
+    public String processEstimate(@Valid @ModelAttribute("estimate") Estimate estimate, Errors errors, @AuthenticationPrincipal User user){
         if (errors.hasErrors())
             return "estimate_form";
 
+        estimate.addUserToEstimate(user);
         Estimate savedEstimate = estimateRepo.save(estimate);
-        log.info("Processing..." + estimate);
-        return "redirect:/submit/current";
+        return "redirect:/results";
     }
-
 
 
     @ModelAttribute
@@ -73,11 +72,11 @@ public class EstimateFormController {
             model.addAttribute(type.toString().toLowerCase(), filterByType(JobTypes, type));
         }
 
-        model.addAttribute("estimate", new Estimate());
+        //model.addAttribute("estimate", new Estimate());
     }
 
     @ModelAttribute(name = "estimate")
-    public Estimate addEstimatetoModel() {
+    public Estimate addEstimateToModel() {
         return new Estimate();
     }
 
